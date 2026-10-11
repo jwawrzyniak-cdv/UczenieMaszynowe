@@ -15,6 +15,17 @@ Materiały do laboratoriów z uczenia maszynowego: sześć laboratoriów i proje
 
 Projekt zaliczeniowy opisuje plik `projekt_zaliczeniowy/projekt_opis.md`.
 
+## Zasady zaliczenia
+
+Na zaliczenie składają się:
+
+- obecność na zajęciach i realizacja zadań podstawowych w trakcie zajęć,
+- projekt końcowy, którego prezentacja odbywa się na ostatnich zajęciach.
+
+Wymagana jest obecność na co najmniej 70% zajęć.
+
+Zadania dodatkowe (`labNN_rozszerzone.md`) dają możliwość podniesienia oceny końcowej. Nie zastępują one zadań podstawowych realizowanych na zajęciach ani projektu końcowego.
+
 ## Jak pracować z materiałami
 
 Przed każdymi zajęciami przeczytajcie `labNN_wprowadzenie.md`. Na zajęciach pracujecie według `labNN_instrukcja.md` w notebooku `labNN_szablon.ipynb`. Plik `labNN_rozszerzone.md` zawiera dodatkowe zadania do wyboru.
