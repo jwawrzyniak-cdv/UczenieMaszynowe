@@ -1,26 +1,11 @@
 # Laboratorium 5: Przetwarzanie tekstu, klasyfikacja tekstu, modelowanie tematów
 
-Czas: 3 godz. lekcyjne (135 min)
 Zbiór danych: PolEmo 2.0 (polskie opinie, CSV z Hugging Face) i 20 Newsgroups (scikit-learn)
 Środowisko: Google Colab, CPU wystarczy
 
 ## Cel
 
 Zajęcia prowadzą przez cały tor pracy z tekstem: od eksploracji korpusu i zamiany dokumentów na macierz cech, przez klasyfikację sentymentu polskich opinii z rzetelną oceną modeli, po modelowanie tematów, wyszukiwanie dokumentów i porównanie TF-IDF z embeddingami zdań. Główny wątek dotyczy tekstu polskiego, więc osobno ocenia się wpływ fleksji na reprezentację. Wyniki trzeba interpretować: patrzeć na cechy, które model uznał za ważne, i na przykłady, w których się myli.
-
-## Podział czasu
-
-| Zadanie | Temat | Czas |
-|---|---|---|
-| 1 | Wczytanie i eksploracja korpusu | 15 min |
-| 2 | Reprezentacja tekstu | 20 min |
-| 3 | Klasyfikacja sentymentu | 30 min |
-| 4 | Interpretacja i błędy | 15 min |
-| 5 | Modelowanie tematów | 25 min |
-| 6 | Podobieństwo dokumentów i wyszukiwarka | 10 min |
-| 7 | Embeddingi zdań | 15 min |
-| 8 | Podsumowanie | 5 min |
-| | Razem | 135 min |
 
 ## Przed zajęciami
 
@@ -34,11 +19,11 @@ BASE = "https://huggingface.co/datasets/allegro/klej-polemo2-in/resolve/main/"
 
 z plików train.csv, valid.csv i test.csv, każdy z kolumnami sentence (tekst) i target (etykieta). Źródło: korpus PolEmo 2.0 z repozytorium CLARIN-PL (https://clarin-pl.eu/dspace/handle/11321/710), wariant "in" z benchmarku KLEJ (https://aclanthology.org/2020.acl-main.111/), publikacja https://aclanthology.org/K19-1092/. Metadane karty zbioru w Hugging Face podają licencję CC BY-SA 4.0, ale opis w tej samej karcie wspomina CC BY-NC-SA 4.0. Dla zajęć wystarczy wiedzieć o tej rozbieżności, ale przed jakimkolwiek innym użyciem zbioru trzeba sprawdzić licencję w źródle. Kolumna target ma cztery wartości, opisane w zadaniu 1.
 
-Wprowadzenie z opisem pojęć znajduje się w pliku lab05_wprowadzenie.md. Wykonanie wszystkich zadań trwa kilka minut, z czego najdłużej kodowanie zdań w zadaniu 7. Przy pierwszym uruchomieniu model z zadania 7 jest pobierany z internetu (około 460 MB), co wydłuża wczytanie.
+Wprowadzenie z opisem pojęć znajduje się w pliku lab05_wprowadzenie.md. Przy pierwszym uruchomieniu model z zadania 7 jest pobierany z internetu (około 460 MB), co wydłuża wczytanie.
 
 W szablonie ustawione są `RANDOM_STATE = 42` oraz stałe BASE i TOKEN.
 
-## Zadanie 1: Wczytanie i eksploracja korpusu (15 min)
+## Zadanie 1: Wczytanie i eksploracja korpusu
 
 1.1 Wczytaj trzy pliki CSV. Wypisz rozmiary i unikalne wartości kolumny target. Wartości mają postać `__label__meta_minus_m` (opinia negatywna), `__label__meta_plus_m` (pozytywna), `__label__meta_zero` (neutralna) i `__label__meta_amb` (niejednoznaczna, w której występują oceny przeciwnych znaków). Zweryfikuj ten opis na przykładach z punktu 1.4 i zapisz własne spostrzeżenia, zwłaszcza o klasie neutralnej.
 
@@ -54,7 +39,7 @@ W szablonie ustawione są `RANDOM_STATE = 42` oraz stałe BASE i TOKEN.
 
 Wynik: tabela liczebności klas, wykresy z 1.3 i 1.5, rozmiar słownika. Pytanie: czym klasa neu różni się od pozostałych klas poza sentymentem i jak to może wpłynąć na klasyfikator?
 
-## Zadanie 2: Reprezentacja tekstu (20 min)
+## Zadanie 2: Reprezentacja tekstu
 
 2.1 Napisz funkcje normalize(text) (małe litery, ujednolicenie białych znaków) i tokenize(text) z użyciem `re.findall`. Sprawdź je na jednym dokumencie.
 
@@ -68,7 +53,7 @@ Wynik: tabela liczebności klas, wykresy z 1.3 i 1.5, rozmiar słownika. Pytanie
 
 Wynik: tabela z 2.4 i tabela podobieństw z 2.5. Pytania: ile razy mniej cech daje min_df=2 niż min_df=1 i co to oznacza dla słów występujących raz? Dlaczego n-gramy znakowe są sensowną alternatywą dla stemmingu w języku polskim i jaką cenę się za nie płaci?
 
-## Zadanie 3: Klasyfikacja sentymentu (30 min)
+## Zadanie 3: Klasyfikacja sentymentu
 
 3.1 Przygotuj walidację krzyżową `StratifiedKFold(5, shuffle=True, random_state=RANDOM_STATE)`. Dla wektoryzacji TF-IDF (słowa 1-2, min_df=2) porównaj w CV (F1 makro, dokładność, czas) cztery modele, każdy jako `Pipeline(TfidfVectorizer, klasyfikator)`: DummyClassifier (klasa najliczniejsza), ComplementNB, LogisticRegression, LinearSVC. Wektoryzator ma być częścią potoku, żeby słownik był uczony tylko na części treningowej każdej iteracji.
 
@@ -82,7 +67,7 @@ Wynik: tabela z 2.4 i tabela podobieństw z 2.5. Pytania: ile razy mniej cech da
 
 Wynik: dwie tabele CV, raport klasyfikacji, macierz pomyłek, wynik na teście. Pytania: czy różnice między wariantami wektoryzacji przekraczają odchylenie standardowe z CV? Dlaczego baseline ma wysoką dokładność, a niską F1 makro? Czemu wynik na zbiorze testowym jest nieco inny niż na walidacyjnym?
 
-## Zadanie 4: Interpretacja i błędy (15 min)
+## Zadanie 4: Interpretacja i błędy
 
 4.1 Z najlepszego potoku wyciągnij nazwy cech (`get_feature_names_out`) i współczynniki (`coef_`) klasyfikatora. Zestaw w tabeli 15 cech o największych współczynnikach dla każdej klasy. Sprawdź, które cechy opisują treść opinii, a które wyłącznie gatunek tekstu.
 
@@ -90,7 +75,7 @@ Wynik: dwie tabele CV, raport klasyfikacji, macierz pomyłek, wynik na teście. 
 
 Wynik: tabela cech, tabela błędów według długości, kilka przykładów z komentarzem. Pytanie: czy po obejrzeniu błędów byłoby sensowne zmienić wektoryzację? W jaki sposób?
 
-## Zadanie 5: Modelowanie tematów (25 min)
+## Zadanie 5: Modelowanie tematów
 
 5.1 Pobierz 20 Newsgroups dla kategorii rec.autos, rec.sport.hockey, sci.space, sci.med, comp.graphics i talk.politics.mideast (subset="train", remove=("headers", "footers", "quotes"), shuffle=True, random_state=RANDOM_STATE). Usuń dokumenty krótsze niż 15 słów i wypisz liczności kategorii.
 
@@ -106,7 +91,7 @@ Wynik: tabela cech, tabela błędów według długości, kilka przykładów z ko
 
 Wynik: tematy obu metod, ARI i NMI, wykresy z 5.5. Pytania: czy któryś z tematów NMF opisuje podpis lub zbiór słów niezwiązanych z żadną dyskusją? Czy wybór k na podstawie błędu rekonstrukcji lub perplexity zgadza się z oceną tematów przez człowieka? Czemu nie spodziewamy się ARI równego 1?
 
-## Zadanie 6: Podobieństwo dokumentów i wyszukiwarka (10 min)
+## Zadanie 6: Podobieństwo dokumentów i wyszukiwarka
 
 6.1 Zbuduj indeks TF-IDF całego zbioru treningowego PolEmo w dwóch wariantach: słowa (min_df=2, sublinear_tf) i n-gramy znakowe (char_wb 3-5, min_df=3). Napisz funkcję search(query, vec, index, k) zwracającą k najbliższych dokumentów (cosine_similarity). Sprawdź dwa własne zapytania w obu wariantach i obejrzyj etykiety zwróconych dokumentów.
 
@@ -114,7 +99,7 @@ Wynik: tematy obu metod, ARI i NMI, wykresy z 5.5. Pytania: czy któryś z temat
 
 Wynik: wyniki wyszukiwania dla kilku zapytań. Pytanie: czemu podobieństwa kosinusowe są tak niskie, choć wynik wygląda sensownie?
 
-## Zadanie 7: Embeddingi zdań (15 min)
+## Zadanie 7: Embeddingi zdań
 
 7.1 Wylosuj stratyfikowaną podpróbę 800 dokumentów treningowych i 300 walidacyjnych. Wczytaj `SentenceTransformer("paraphrase-multilingual-MiniLM-L12-v2", device="cpu")` i zakoduj teksty, mierząc czas. Przy pierwszym uruchomieniu model jest pobierany, więc czas wczytania będzie dłuższy. Ustaw `max_seq_length = 128`, żeby kodowanie na CPU było szybkie.
 
@@ -122,7 +107,7 @@ Wynik: wyniki wyszukiwania dla kilku zapytań. Pytanie: czemu podobieństwa kosi
 
 Wynik: tabela trzech wyników i czas kodowania. Pytania: jak na wynik wpływa skrócenie dokumentów do 128 tokenów? Czy porównanie byłoby uczciwe, gdyby embeddingi uczono na podpróbie, a TF-IDF na całym zbiorze?
 
-## Zadanie 8: Podsumowanie (5 min)
+## Zadanie 8: Podsumowanie
 
 Zbierz w jednej tabeli wyniki F1 makro z zadań 3 i 7 (słownik results). Napisz kilka zdań: który model wybrałbyś do wdrożenia, co jest dużą słabością wybranego podejścia i jaki kolejny krok podjąłbyś, mając więcej czasu.
 

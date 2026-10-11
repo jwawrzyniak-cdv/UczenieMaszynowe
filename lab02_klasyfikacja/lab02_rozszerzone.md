@@ -1,6 +1,6 @@
 # Laboratorium 2: zadania dodatkowe
 
-Pięć zadań alternatywnych dla szybszych osób lub do pracy domowej. Zadania są od siebie niezależne: każde zajmuje 30 do 60 minut i można wykonać dowolne z nich, w dowolnej kolejności. Zadania A, B, D i E używają zbioru German Credit, zadanie C zbioru digits. Rozwiązania zapisujcie w osobnym notebooku, jedna sekcja na zadanie.
+Pięć zadań alternatywnych dla szybszych osób lub do pracy domowej. Zadania są od siebie niezależne i można wykonać dowolne z nich, w dowolnej kolejności. Zadania A, B, D i E używają zbioru German Credit, zadanie C zbioru digits. Rozwiązania zapisujcie w osobnym notebooku, jedna sekcja na zadanie.
 
 ## Wspólne przygotowanie
 
@@ -32,7 +32,7 @@ def mean_cost(y_true, y_pred):             # koszt na klienta, FN kosztuje 5, FP
 
 Zbiór testowy `X_test`, `y_test` w tych zadaniach służy co najwyżej do kontrolnego porównania na końcu. Wybory i oceny robicie na zbiorze treningowym.
 
-## Zadanie A: Oversampling i wyciek danych (ok. 45 min)
+## Zadanie A: Oversampling i wyciek danych
 
 Gdy klasa pozytywna jest rzadka, sięga się czasem po sztuczne zwiększenie jej liczności, na przykład metodą SMOTE, która tworzy nowe przykłady jako interpolacje między sąsiadami z klasy rzadkiej. Łatwo to zrobić źle.
 
@@ -44,7 +44,7 @@ Gdy klasa pozytywna jest rzadka, sięga się czasem po sztuczne zwiększenie jej
 
 Wyjaśnijcie, dlaczego oszacowanie z punktu 3 jest zawyżone i które z oszacowań zgadza się z wynikiem testowym. Zastanówcie się też, czy SMOTE poprawił ranking klientów (pole pod ROC), czy tylko przesunął punkt pracy klasyfikatora, i co jeszcze dałoby podobny efekt.
 
-## Zadanie B: Kalibracja prawdopodobieństw (ok. 45 min)
+## Zadanie B: Kalibracja prawdopodobieństw
 
 Model może dobrze porządkować klientów i jednocześnie podawać prawdopodobieństwa, które nie odpowiadają rzeczywistym częstościom. Dla progu z macierzy kosztów (1/6) ma to znaczenie.
 
@@ -55,7 +55,7 @@ Model może dobrze porządkować klientów i jednocześnie podawać prawdopodobi
 
 Który wariant jest najlepiej skalibrowany według wyniku Briera i według wykresu? Co dzieje się z kalibracją izotoniczną przy tak małym zbiorze? Czy kalibracja zmienia koszt biznesowy bardziej niż zmiana progu z 0,5 na 1/6?
 
-## Zadanie C: Klasyfikacja wieloklasowa (ok. 40 min)
+## Zadanie C: Klasyfikacja wieloklasowa
 
 Zadanie na zbiorze cyfr `sklearn.datasets.load_digits` (1797 obrazów 8 na 8 pikseli, 10 klas).
 
@@ -65,7 +65,7 @@ Zadanie na zbiorze cyfr `sklearn.datasets.load_digits` (1797 obrazów 8 na 8 pik
 
 Czym różnią się średnie mikro, makro i ważone i kiedy mikro-F1 jest równe accuracy? Co ukrywa accuracy po zmniejszeniu dwóch klas i które metryki to ujawniają? Który model ucierpiał najbardziej?
 
-## Zadanie D: Formalne porównanie dwóch modeli (ok. 50 min)
+## Zadanie D: Formalne porównanie dwóch modeli
 
 Różnica 0,01 pola pod ROC między dwoma modelami może być prawdziwa albo przypadkowa. Zadanie pokazuje dwa sposoby rozstrzygnięcia.
 
@@ -76,7 +76,7 @@ Różnica 0,01 pola pod ROC między dwoma modelami może być prawdziwa albo prz
 
 Dlaczego zwykły test t jest zbyt pewny siebie dla wyników z walidacji krzyżowej? Jaki jest praktyczny wniosek z braku istotnej różnicy między modelami?
 
-## Zadanie E: Karta scoringowa, Naive Bayes i boosting (ok. 60 min)
+## Zadanie E: Karta scoringowa, Naive Bayes i boosting
 
 Banki często budują kartę scoringową: regresję logistyczną na cechach pogrupowanych w przedziały, której współczynniki przelicza się na punkty. Takie punkty da się wyjaśnić klientowi i audytorowi.
 

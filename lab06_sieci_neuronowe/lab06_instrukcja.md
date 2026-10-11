@@ -1,24 +1,11 @@
 # Laboratorium 6: Sieci neuronowe
 
-Czas: 4 godz. lekcyjne (180 min)
 Zbiór danych: Fashion-MNIST i CIFAR-10 (`keras.datasets`), uczenie transferowe z wagami ImageNet (`keras.applications`)
 Środowisko: Google Colab, zalecany GPU (T4), CPU wystarczy
 
 ## Cel
 
 Zadania prowadzą od pojedynczego neuronu napisanego w NumPy, przez perceptron wielowarstwowy (MLP) i sieć konwolucyjną (CNN), do uczenia transferowego. Po zajęciach powinna być jasna odpowiedź na pytanie, co dokładnie robi `model.fit`, jak rozpoznać nadmierne dopasowanie na krzywych uczenia i kiedy opłaca się sięgnąć po gotowy, wstępnie wytrenowany model. Wszystkie modele trenujemy na podzbiorach danych, tak aby całość dała się wykonać także bez GPU.
-
-## Podział czasu
-
-| Zadanie | Temat | Czas |
-|---|---|---|
-| 1 | Neuron i spadek gradientu od zera w NumPy | 25 min |
-| 2 | MLP na Fashion-MNIST: architektura, krzywe uczenia, regularyzacja | 40 min |
-| 3 | Sieć konwolucyjna na Fashion-MNIST | 40 min |
-| 4 | Augmentacja danych na CIFAR-10 | 25 min |
-| 5 | Uczenie transferowe (MobileNetV2) | 35 min |
-| 6 | Zapis modelu, nowy obraz, odtwarzalność, pytania kontrolne | 15 min |
-| | Razem | 180 min |
 
 ## Przed zajęciami
 
@@ -30,7 +17,7 @@ Zbiory pobierają się automatycznie przy pierwszym wywołaniu `load_data`, a wa
 
 Zasady pracy na tych zajęciach. Ziarno losowości ustawiamy zawsze na początku komórki z modelem: `keras.utils.set_random_seed(RANDOM_STATE)`. Zbiór testowy wykorzystujemy tylko do ostatecznej oceny, a decyzje (liczba epok, regularyzacja, wybór aktywacji) podejmujemy na zbiorze walidacyjnym. Przy każdym treningu obserwujemy obie krzywe, treningową i walidacyjną.
 
-## Zadanie 1: Neuron i spadek gradientu od zera (25 min)
+## Zadanie 1: Neuron i spadek gradientu od zera
 
 Cel: zobaczyć, że trening sieci to powtarzane obliczanie gradientu i przesuwanie wag, i porównać własną pętlę z `model.fit`.
 
@@ -42,7 +29,7 @@ Cel: zobaczyć, że trening sieci to powtarzane obliczanie gradientu i przesuwan
 
 Wnioski zapisz w komórce pod zadaniem: jak lr wpływa na przebieg straty, co dzieje się dla lr = 100 i dlaczego wagi z Keras powinny pokrywać się z Twoimi.
 
-## Zadanie 2: MLP na Fashion-MNIST (40 min)
+## Zadanie 2: MLP na Fashion-MNIST
 
 Cel: zbudować pierwszą sieć w Keras, nauczyć się czytać krzywe uczenia i poznać podstawowe sposoby walki z nadmiernym dopasowaniem.
 
@@ -57,7 +44,7 @@ Cel: zbudować pierwszą sieć w Keras, nauczyć się czytać krzywe uczenia i p
 
 Wnioski: która aktywacja i który optymalizator wypadły najlepiej przy tak krótkim treningu, od której epoki duży model zaczyna się przeuczać i która metoda regularyzacji dała najlepszą stratę walidacyjną.
 
-## Zadanie 3: Sieć konwolucyjna na Fashion-MNIST (40 min)
+## Zadanie 3: Sieć konwolucyjna na Fashion-MNIST
 
 Cel: porównać CNN z MLP pod względem dokładności, liczby parametrów i czasu oraz sprawdzić, w czym sieć się myli i co wykrywają jej filtry.
 
@@ -70,7 +57,7 @@ Cel: porównać CNN z MLP pod względem dokładności, liczby parametrów i czas
 
 Wnioski: ile parametrów mniej ma CNN i czy dorównał MLP dokładnością, dlaczego mniejsza liczba parametrów nie oznacza krótszego czasu epoki, które klasy są mylone i co mogą mieć ze sobą wspólnego, czy w filtrach widać jakąś strukturę.
 
-## Zadanie 4: Augmentacja danych na CIFAR-10 (25 min)
+## Zadanie 4: Augmentacja danych na CIFAR-10
 
 Cel: sprawdzić, czy sztuczne powiększenie zbioru poprawia generalizację, gdy danych jest mało.
 
@@ -84,7 +71,7 @@ Wskazówka techniczna: w warstwach `RandomRotation` i `RandomZoom` podaj `fill_m
 
 Wnioski: jak zmienia się różnica między dokładnością treningową a walidacyjną, czy augmentacja poprawiła wynik testowy i ile kosztuje czasowo.
 
-## Zadanie 5: Uczenie transferowe (35 min)
+## Zadanie 5: Uczenie transferowe
 
 Cel: porównać CNN trenowany od zera z modelem wstępnie wytrenowanym na ImageNet, przy tej samej niewielkiej liczbie obrazów.
 
@@ -95,7 +82,7 @@ Cel: porównać CNN trenowany od zera z modelem wstępnie wytrenowanym na ImageN
 
 Wnioski: ile dało uczenie transferowe, czy dostrajanie się opłaciło oraz jak zmieniłby się wynik, gdyby obrazy były bardzo odmienne od zdjęć z ImageNet (np. zdjęcia rentgenowskie).
 
-## Zadanie 6: Zapis modelu, nowy obraz, odtwarzalność (15 min)
+## Zadanie 6: Zapis modelu, nowy obraz, odtwarzalność
 
 1. Zapisz CNN z zadania 3 do pliku `.keras`, wczytaj go funkcją `keras.models.load_model` i sprawdź, czy predykcje obu modeli na 200 obrazach testowych są identyczne. Wypisz rozmiar pliku.
 2. Zasymuluj nowy obraz: zapisz wybrany obraz testowy jako PNG w rozdzielczości 280x280, wczytaj go biblioteką Pillow, sprowadź do 28x28 w skali szarości i do zakresu [0, 1], po czym zrób predykcję wczytanym modelem. Wypisz trzy najbardziej prawdopodobne klasy. Jeśli zostało czasu, wgraj własny obraz (panel plików w Colabie) i sprawdź, jak model sobie z nim radzi.

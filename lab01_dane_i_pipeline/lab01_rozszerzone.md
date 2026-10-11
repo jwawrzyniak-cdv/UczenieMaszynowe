@@ -1,10 +1,10 @@
 # Laboratorium 1: zadania dodatkowe
 
-Zadania są alternatywami, nie kolejnymi etapami jednego projektu. Każde da się zrobić samodzielnie w 30 do 60 minut, w osobnym notebooku (lub w osobnej sekcji notebooka z laboratorium). Prowadzący może przydzielić różnym osobom różne zadania. Przy każdym z nich zacznij od wczytania zbioru Adult, zakodowania celu jako 0/1 i stratyfikowanego podziału 80/20 z `random_state=42`. Wszystkie oceny wykonuj w pięciokrotnej stratyfikowanej walidacji krzyżowej na zbiorze treningowym, a zbioru testowego użyj najwyżej raz, na końcu.
+Zadania są alternatywami, nie kolejnymi etapami jednego projektu. Każde da się zrobić samodzielnie, w osobnym notebooku (lub w osobnej sekcji notebooka z laboratorium). Prowadzący może przydzielić różnym osobom różne zadania. Przy każdym z nich zacznij od wczytania zbioru Adult, zakodowania celu jako 0/1 i stratyfikowanego podziału 80/20 z `random_state=42`. Wszystkie oceny wykonuj w pięciokrotnej stratyfikowanej walidacji krzyżowej na zbiorze treningowym, a zbioru testowego użyj najwyżej raz, na końcu.
 
 Każde zadanie kończy się pytaniem, na które odpowiedz w komórce tekstowej, odwołując się do liczb z tabeli.
 
-## A. Imputacja na sztucznie wprowadzonych brakach (40 do 50 min)
+## A. Imputacja na sztucznie wprowadzonych brakach
 
 Cechy liczbowe Adult nie mają braków, więc znasz wartości prawdziwe i możesz zmierzyć błąd imputacji.
 
@@ -16,7 +16,7 @@ Cechy liczbowe Adult nie mają braków, więc znasz wartości prawdziwe i możes
 
 Pytanie: czy bardziej złożony imputer wygrywa ze średnią i dlaczego tak lub nie? Powiąż odpowiedź z macierzą korelacji.
 
-## B. Własny transformer (40 do 50 min)
+## B. Własny transformer
 
 1. Napisz klasę `CapitalFeatures(BaseEstimator, TransformerMixin)` z parametrami `use_log` i `add_flags`. Transformer przyjmuje kolumny `capital-gain` i `capital-loss` i zwraca logarytm `log1p` obu oraz flagi, czy wartość jest dodatnia. Zapamiętaj nazwy kolumn w `fit`, zaimplementuj `get_feature_names_out` i użyj `check_is_fitted` w `transform`.
 2. Sprawdź kompatybilność: `clone`, `get_params`, działanie w `ColumnTransformer` z `set_output(transform="pandas")` oraz błąd przy użyciu przed `fit`.
@@ -24,7 +24,7 @@ Pytanie: czy bardziej złożony imputer wygrywa ze średnią i dlaczego tak lub 
 
 Pytanie: który element transformera daje zysk i dlaczego drzewo na tym nie korzysta?
 
-## C. Kodowanie cechy o wysokiej liczności (40 do 60 min)
+## C. Kodowanie cechy o wysokiej liczności
 
 1. Zmieniaj sposób kodowania wyłącznie dla `native-country` (41 poziomów, ok. 90% to United-States), a pozostałe kolumny kategoryczne koduj stale `OneHotEncoder`. Porównaj: OneHot ze wszystkimi poziomami, OneHot z `min_frequency=100`, `OrdinalEncoder` (z `handle_unknown="use_encoded_value"`) i `TargetEncoder`. Oceń regresję logistyczną i drzewo decyzyjne.
 2. Wykonaj eksperyment z wyciekiem: utwórz kolumnę `kod` z 2000 losowych poziomów (niezwiązaną z celem). Porównaj ROC AUC trzech podejść, używając tylko tej kolumny: (a) średnia celu dla poziomu policzona raz na całym zbiorze treningowym, a potem walidacja krzyżowa, (b) `TargetEncoder` wewnątrz pipeline'u, (c) `OneHotEncoder` wewnątrz pipeline'u. Poprawna metoda powinna dać wynik bliski 0,5.
@@ -33,7 +33,7 @@ Uwaga techniczna: od scikit-learn 1.9 parametr `random_state` w `TargetEncoder` 
 
 Pytanie: dlaczego podejście (a) daje wynik wyraźnie lepszy od losowego, skoro kolumna jest szumem?
 
-## D. Wartości odstające w pipeline'ie (40 do 50 min)
+## D. Wartości odstające w pipeline'ie
 
 1. Napisz transformer `QuantileClipper(upper)`, który w `fit` zapamiętuje górny kwantyl każdej kolumny, a w `transform` przycina wartości do tej granicy. Zaimplementuj `get_feature_names_out`.
 2. Wypisz kwantyle 50, 90, 95, 99% i maksimum cech liczbowych na zbiorze treningowym. Policz, jaki odsetek wartości przycinają kwantyle 0,99 i 0,95 w każdej kolumnie.
@@ -41,7 +41,7 @@ Pytanie: dlaczego podejście (a) daje wynik wyraźnie lepszy od losowego, skoro 
 
 Pytanie: dlaczego przycinanie kwantylem 0,95 szkodzi w tym zbiorze, a w innych często pomaga? Co mówią kwantyle `capital-gain` i `capital-loss`?
 
-## E. Karta zbioru danych (40 do 60 min)
+## E. Karta zbioru danych
 
 Przygotuj dokument (jedna do dwóch stron, w notebooku jako markdown) opisujący zbiór Adult z punktu widzenia osoby, która ma zdecydować, czy wolno go użyć w danym zastosowaniu. Liczby do karty zbierz z danych.
 

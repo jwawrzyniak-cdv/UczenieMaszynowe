@@ -1,6 +1,5 @@
 # Laboratorium 4: Uczenie nienadzorowane
 
-Czas: 3 godz. lekcyjne (135 min)
 Zbiór danych: Wholesale customers (OpenML, `fetch_openml("wholesale-customers", as_frame=True)`) oraz digits (`sklearn.datasets.load_digits`)
 Środowisko: Google Colab (CPU wystarczy)
 
@@ -8,24 +7,11 @@ Zbiór danych: Wholesale customers (OpenML, `fetch_openml("wholesale-customers",
 
 Hurtownia ma 440 klientów i chce przekazać działowi handlowemu opis kilku typów odbiorców. Nikt nie podał etykiet, więc segmenty trzeba wyznaczyć z samych wydatków. Zadania prowadzą od przygotowania danych przez k-means i inne algorytmy skupień, po PCA, wizualizację t-SNE i wykrywanie nietypowych klientów. Na końcu masz umieć uzasadnić wybór liczby segmentów, opisać je w jednostkach zrozumiałych dla handlowca i powiedzieć, czego analiza nie rozstrzyga.
 
-## Podział czasu
-
-| Zadanie | Temat | Czas |
-|---|---|---|
-| 1 | Dane i przygotowanie do skupień | 15 min |
-| 2 | K-means | 25 min |
-| 3 | Inne algorytmy skupień | 30 min |
-| 4 | PCA | 20 min |
-| 5 | Wizualizacja wysokowymiarowa | 20 min |
-| 6 | Wykrywanie anomalii | 20 min |
-| 7 | Podsumowanie | 5 min |
-| | Razem | 135 min |
-
 ## Przed zajęciami
 
 Przeczytaj `lab04_wprowadzenie.md`. Otwórz `lab04_szablon.ipynb` w Colabie (Plik, Wczytaj notatnik) i ustaw dowolny runtime CPU. Pierwsza komórka instaluje `umap-learn`, który nie jest domyślnie dostępny. Potrzebny jest dostęp do internetu, bo oba zbiory są pobierane programowo. Wszystkie losowe elementy mają używać `RANDOM_STATE = 42`. Przy każdym zadaniu w szablonie znajdziesz nagłówki i komórki z komentarzami, co uzupełnić.
 
-## Zadanie 1: Dane i przygotowanie do skupień (15 min)
+## Zadanie 1: Dane i przygotowanie do skupień
 
 ### 1.1 Wczytanie i kontrola danych
 
@@ -52,7 +38,7 @@ Przeczytaj `lab04_wprowadzenie.md`. Otwórz `lab04_szablon.ipynb` w Colabie (Pli
 2. Dla każdego wariantu podaj rozmiary skupień oraz ARI względem `Channel`.
 3. Wyjaśnij, dlaczego rozmiary skupień w wariantach różnią się tak bardzo i który wariant uznajesz za właściwy do dalszej pracy.
 
-## Zadanie 2: K-means (25 min)
+## Zadanie 2: K-means
 
 ### 2.1 Metoda łokcia i współczynnik sylwetki
 
@@ -81,7 +67,7 @@ Przeczytaj `lab04_wprowadzenie.md`. Otwórz `lab04_szablon.ipynb` w Colabie (Pli
 1. Zbuduj `Pipeline`: `log1p`, `StandardScaler`, `KMeans` i dopasuj go do surowych wydatków. Sprawdź, że daje ten sam podział co wcześniej (ARI równe 1).
 2. Wymyśl dwóch klientów (wydatki w sześciu kategoriach), przydziel ich do segmentów i sprawdź, czy wynik zgadza się z Twoją intuicją.
 
-## Zadanie 3: Inne algorytmy skupień (30 min)
+## Zadanie 3: Inne algorytmy skupień
 
 ### 3.1 Klasteryzacja hierarchiczna
 
@@ -107,7 +93,7 @@ Przeczytaj `lab04_wprowadzenie.md`. Otwórz `lab04_szablon.ipynb` w Colabie (Pli
 2. Policz macierz ARI między samymi metodami.
 3. Napisz, co oznacza niskie lub wysokie ARI względem `Channel`. Podział na kanały jest zewnętrznym punktem odniesienia, nie prawdą ostateczną: segmenty mogą słusznie dzielić klientów inaczej niż kanał.
 
-## Zadanie 4: PCA (20 min)
+## Zadanie 4: PCA
 
 ### 4.1 Wyjaśniona wariancja
 
@@ -126,7 +112,7 @@ Przeczytaj `lab04_wprowadzenie.md`. Otwórz `lab04_szablon.ipynb` w Colabie (Pli
 2. Uruchom k-means na trzech pierwszych składowych i porównaj z podziałem na wszystkich cechach za pomocą ARI.
 3. Oceń, czy dwuwymiarowy rzut wystarcza, by wiarygodnie zobaczyć segmenty.
 
-## Zadanie 5: Wizualizacja wysokowymiarowa (20 min)
+## Zadanie 5: Wizualizacja wysokowymiarowa
 
 ### 5.1 Digits i PCA
 
@@ -143,7 +129,7 @@ Przeczytaj `lab04_wprowadzenie.md`. Otwórz `lab04_szablon.ipynb` w Colabie (Pli
 
 Jeśli zostaje czas, zbuduj osadzenie UMAP, narysuj je i policz tę samą dokładność 5-NN. Zanotuj czas działania.
 
-## Zadanie 6: Wykrywanie anomalii (20 min)
+## Zadanie 6: Wykrywanie anomalii
 
 ### 6.1 IsolationForest
 
@@ -165,7 +151,7 @@ Jeśli zostaje czas, zbuduj osadzenie UMAP, narysuj je i policz tę samą dokła
 1. Dla kilku klientów oznaczonych przez obie metody pokaż percentyle ich wydatków w każdej kategorii. Napisz, co czyni ich nietypowymi z punktu widzenia handlowca.
 2. Uruchom `IsolationForest` na surowych wydatkach i sprawdź, ilu z oznaczonych klientów pokrywa się z wersją na danych zlogarytmowanych i wystandaryzowanych.
 
-## Zadanie 7: Podsumowanie (5 min)
+## Zadanie 7: Podsumowanie
 
 Zapisz w komórce markdown krótkie podsumowanie: ostateczna segmentacja (liczba i nazwy segmentów), rekomendacja dla działu handlowego, jedna lub dwie grupy klientów wymagające osobnego potraktowania (anomalie) oraz ograniczenia analizy.
 

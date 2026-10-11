@@ -1,8 +1,8 @@
 # Laboratorium 4: zadania dodatkowe
 
-Pięć zadań jest niezależnych i równoważnych. Każde zajmuje 30 do 60 minut, można je przydzielić różnym osobom albo wybrać jedno jako pracę domową. Do wykonania wystarczy ten sam notebook startowy co w laboratorium: otwórz nowy notatnik w Colabie i skopiuj z szablonu komórkę z importami oraz `RANDOM_STATE = 42`. Biblioteki spoza domyślnego zestawu Colaba są wskazane przy zadaniach, w których są potrzebne. Wynik oddaj jako notebook wykonany od początku do końca, z wykresami i krótkimi odpowiedziami w komórkach markdown.
+Pięć zadań jest niezależnych i równoważnych. Każde można przydzielić różnym osobom albo wybrać jedno jako pracę domową. Do wykonania wystarczy ten sam notebook startowy co w laboratorium: otwórz nowy notatnik w Colabie i skopiuj z szablonu komórkę z importami oraz `RANDOM_STATE = 42`. Biblioteki spoza domyślnego zestawu Colaba są wskazane przy zadaniach, w których są potrzebne. Wynik oddaj jako notebook wykonany od początku do końca, z wykresami i krótkimi odpowiedziami w komórkach markdown.
 
-## Zadanie A: Kwantyzacja kolorów obrazu (30 do 40 min)
+## Zadanie A: Kwantyzacja kolorów obrazu
 
 Obraz kolorowy z 96 tysiącami różnych kolorów można zapisać za pomocą kilkunastu, jeśli każdy piksel zastąpić najbliższym kolorem z palety. Paletę wyznacza k-means w przestrzeni RGB.
 
@@ -12,7 +12,7 @@ Obraz kolorowy z 96 tysiącami różnych kolorów można zapisać za pomocą kil
 4. Porównaj czas dopasowania na próbce, na pełnych danych i dla `MiniBatchKMeans`.
 5. Odpowiedz: od ilu kolorów obraz wygląda dla Ciebie akceptowalnie i czy zgadza się to z krzywą błędu?
 
-## Zadanie B: Algorytm Lloyda w NumPy (40 do 60 min)
+## Zadanie B: Algorytm Lloyda w NumPy
 
 1. Wczytaj Wholesale (`fetch_openml("wholesale-customers", as_frame=True)`), zostaw sześć kolumn wydatków (bez zdublowanej kolumny regionu i bez `Channel`), zlogarytmuj je i wystandaryzuj. Na tych danych pracuje całe zadanie.
 2. Napisz funkcję `lloyd(X, centers)` w samym NumPy: przypisanie do najbliższego centroidu, przeliczenie centroidów, test zbieżności (przypisania przestają się zmieniać) i zapis inercji w każdej iteracji. Zadbaj o przypadek pustego skupienia. Narysuj inercję względem numeru iteracji.
@@ -20,7 +20,7 @@ Obraz kolorowy z 96 tysiącami różnych kolorów można zapisać za pomocą kil
 4. Dopisz inicjalizację `k-means++` i porównaj ją z losową: dla k równego 4 i 10 wykonaj po 50 pojedynczych uruchomień każdej (ziarna od 0 do 49) i porównaj minimum, medianę i maksimum końcowej inercji.
 5. Odpowiedz: czy `k-means++` dał wyraźną poprawę na tych danych i czym tłumaczysz wynik?
 
-## Zadanie C: HDBSCAN i klasteryzacja spektralna (40 do 50 min)
+## Zadanie C: HDBSCAN i klasteryzacja spektralna
 
 K-means i GMM zakładają zwarte, w przybliżeniu wypukłe skupienia. Sprawdź, co się dzieje, gdy ten warunek nie jest spełniony.
 
@@ -29,7 +29,7 @@ K-means i GMM zakładają zwarte, w przybliżeniu wypukłe skupienia. Sprawdź, 
 3. Zbadaj wrażliwość: DBSCAN dla kilku wartości `eps`, HDBSCAN dla kilku wartości `min_cluster_size`.
 4. Odpowiedz: która metoda wygrywa na którym zbiorze i co to mówi o założeniach algorytmów? Wskaż, który parametr trudniej dobrać bez znajomości etykiet.
 
-## Zadanie D: Reguły asocjacyjne (40 do 50 min)
+## Zadanie D: Reguły asocjacyjne
 
 Wymaga biblioteki `mlxtend`. Zainstaluj aktualną wersję: `!pip install -q -U mlxtend`.
 
@@ -41,7 +41,7 @@ Dane zakupów nie są częścią laboratorium, więc wygeneruj je sam. Zbiór ma
 4. Zbadaj wrażliwość: ile reguł zostaje dla `min_support` równego 0,02, 0,05, 0,1 i 0,2.
 5. Odpowiedz: czym różnią się `support`, `confidence` i `lift` i dlaczego wysoka `confidence` sama o niczym nie świadczy?
 
-## Zadanie E: One-Class SVM kontra IsolationForest (30 do 40 min)
+## Zadanie E: One-Class SVM kontra IsolationForest
 
 1. Wczytaj Wholesale (`fetch_openml("wholesale-customers", as_frame=True)`), zostaw sześć kolumn wydatków (bez zdublowanej kolumny regionu i bez `Channel`), zlogarytmuj je i wystandaryzuj.
 2. Dopasuj `IsolationForest` (`contamination=0.05`) oraz `OneClassSVM` (`kernel="rbf"`, `nu=0.05`) dla `gamma` równego `"scale"`, 0,01, 0,05, 0,2 i 0,5. Dla każdego ustawienia podaj liczbę oznaczonych klientów, liczbę wspólnych z IsolationForest i korelację rang wyników.

@@ -1,8 +1,8 @@
 # Laboratorium 5: zadania dodatkowe
 
-Pięć zadań to niezależne alternatywy: każde da się zrobić samodzielnie w 30 do 60 min i żadne nie korzysta z wyników innego. Wszystkie pracują na tych samych danych co główna część laboratorium (PolEmo 2.0 bez klasy amb, z wyjątkiem zadania R5, albo 20 Newsgroups). W nowym notebooku wystarczy skopiować komórkę z importami i wczytaniem danych z szablonu. Zadania R1, R2 i R4 wymagają dodatkowej instalacji: `%pip install -q sentence-transformers gensim spacy`.
+Pięć zadań to niezależne alternatywy: każde da się zrobić samodzielnie i żadne nie korzysta z wyników innego. Wszystkie pracują na tych samych danych co główna część laboratorium (PolEmo 2.0 bez klasy amb, z wyjątkiem zadania R5, albo 20 Newsgroups). W nowym notebooku wystarczy skopiować komórkę z importami i wczytaniem danych z szablonu. Zadania R1, R2 i R4 wymagają dodatkowej instalacji: `%pip install -q sentence-transformers gensim spacy`.
 
-## Zadanie R1: Lematyzacja polskiego tekstu (ok. 45 min)
+## Zadanie R1: Lematyzacja polskiego tekstu
 
 Sprawdź, czy sprowadzenie słów do form podstawowych poprawia klasyfikację sentymentu.
 
@@ -14,7 +14,7 @@ Sprawdź, czy sprowadzenie słów do form podstawowych poprawia klasyfikację se
 
 Wynik: tabela porównawcza i lista błędów lematyzatora. Pytanie: czy lematyzacja pomogła i jak bardzo wynik zależy od jakości lematyzatora? Czemu odpowiedzi nie można wyciągnąć z jednego przebiegu?
 
-## Zadanie R2: Klasteryzacja dokumentów (ok. 40 min)
+## Zadanie R2: Klasteryzacja dokumentów
 
 Porównaj grupowanie dokumentów algorytmem KMeans na trzech reprezentacjach.
 
@@ -25,7 +25,7 @@ Porównaj grupowanie dokumentów algorytmem KMeans na trzech reprezentacjach.
 
 Wynik: tabela ARI, NMI i sylwetki, tabele krzyżowe, wykres. Pytania: dlaczego niska wartość współczynnika sylwetki nie oznacza złego dopasowania do kategorii? Które skupienie TF-IDF nie opisuje żadnego tematu i skąd się bierze?
 
-## Zadanie R3: Naiwny klasyfikator Bayesa od zera (ok. 45 min)
+## Zadanie R3: Naiwny klasyfikator Bayesa od zera
 
 Zaimplementuj w NumPy wielomianowy naiwny klasyfikator Bayesa i porównaj go z MultinomialNB.
 
@@ -37,7 +37,7 @@ Zaimplementuj w NumPy wielomianowy naiwny klasyfikator Bayesa i porównaj go z M
 
 Wynik: tabela zgodności i F1 oraz wynik eksperymentu z iloczynem prawdopodobieństw. Pytania: czemu bez wygładzania model jest bezużyteczny dla słów niewidzianych w danej klasie? Dlaczego naiwny Bayes bywa dobrym klasyfikatorem mimo fałszywego założenia o niezależności słów?
 
-## Zadanie R4: Word2Vec (ok. 45 min)
+## Zadanie R4: Word2Vec
 
 Wytrenuj własne wektory słów na korpusie opinii i sprawdź, co z nich wynika.
 
@@ -48,7 +48,7 @@ Wytrenuj własne wektory słów na korpusie opinii i sprawdź, co z nich wynika.
 
 Wynik: tabela sąsiadów, wyniki analogii, porównanie F1. Pytania: czemu "polecam" i "odradzam" są blisko siebie, choć znaczą coś przeciwnego? Co jeszcze oprócz wielkości korpusu ogranicza jakość wektorów?
 
-## Zadanie R5: Cztery klasy i klasa niejednoznaczna (ok. 40 min)
+## Zadanie R5: Cztery klasy i klasa niejednoznaczna
 
 Główna część laboratorium pomija klasę amb. W tym zadaniu wraca ona do gry.
 

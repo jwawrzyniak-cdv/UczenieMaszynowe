@@ -1,8 +1,8 @@
 # Laboratorium 3: zadania dodatkowe
 
-Pięć zadań jest niezależnych od siebie. Każde da się wykonać w 30 do 60 minut i można je przydzielić różnym osobom albo zrealizować jako pracę domową. Zadania A, B, C i E korzystają z tych samych danych i tych samych funkcji pomocniczych co laboratorium (Ames Housing, `make_preprocessor`, `make_model`, `evaluate`, `SCORING`, podział `X_train` i `X_test`, `cv`). Jeśli praca odbywa się w nowym notebooku, należy skopiować te definicje z notebooka z zadań podstawowych albo z `lab03_szablon.ipynb`. Zadanie D używa osobnego zbioru i nie wymaga niczego z laboratorium. Do każdego zadania należy dołączyć w notebooku komórkę markdown z wnioskami (3 do 5 zdań).
+Pięć zadań jest niezależnych od siebie. Każde da się wykonać samodzielnie i można je przydzielić różnym osobom albo zrealizować jako pracę domową. Zadania A, B, C i E korzystają z tych samych danych i tych samych funkcji pomocniczych co laboratorium (Ames Housing, `make_preprocessor`, `make_model`, `evaluate`, `SCORING`, podział `X_train` i `X_test`, `cv`). Jeśli praca odbywa się w nowym notebooku, należy skopiować te definicje z notebooka z zadań podstawowych albo z `lab03_szablon.ipynb`. Zadanie D używa osobnego zbioru i nie wymaga niczego z laboratorium. Do każdego zadania należy dołączyć w notebooku komórkę markdown z wnioskami (3 do 5 zdań).
 
-## Zadanie A: XGBoost i LightGBM kontra HistGradientBoosting (30 do 40 min)
+## Zadanie A: XGBoost i LightGBM kontra HistGradientBoosting
 
 Biblioteki XGBoost i LightGBM są standardem w zastosowaniach przemysłowych, a ich implementacje boostingu różnią się szczegółami od `HistGradientBoostingRegressor` ze scikit-learn. Obie są domyślnie dostępne w Colabie.
 
@@ -11,7 +11,7 @@ Biblioteki XGBoost i LightGBM są standardem w zastosowaniach przemysłowych, a 
 3. Dla LightGBM zbadaj kompromis między liczbą drzew a tempem uczenia: (0,2; 75 drzew), (0,1; 150), (0,05; 300), (0,025; 600). Opisz, jak zmieniają się RMSLE i czas.
 4. Odpowiedz: czy różnice między trzema bibliotekami przekraczają to, co można przypisać szumowi walidacji? Co jeszcze, poza samą implementacją, różni konfiguracje w poleceniu 1?
 
-## Zadanie B: SHAP, wartości globalne i lokalne (40 do 50 min)
+## Zadanie B: SHAP, wartości globalne i lokalne
 
 Ważność permutacyjna mówi, które cechy są ważne dla modelu jako całości. Wartości SHAP rozkładają natomiast predykcję dla pojedynczego domu na wkłady poszczególnych cech.
 
@@ -21,7 +21,7 @@ Ważność permutacyjna mówi, które cechy są ważne dla modelu jako całości
 4. Wybierz dom o cenie najbliższej medianie zbioru testowego i narysuj dla niego `shap.plots.waterfall`. Wyjaśnij własnymi słowami, które cechy podniosły, a które obniżyły predykcję względem wartości bazowej. Pamiętaj, że wartości są w skali logarytmicznej, a cechy liczbowe są standaryzowane.
 5. Narysuj `shap.plots.scatter` dla `GrLivArea`, z kolorowaniem według `OverallQual`. Oceń, czy wkład powierzchni zależy od jakości.
 
-## Zadanie C: Przedziały predykcji z regresji kwantylowej (40 do 50 min)
+## Zadanie C: Przedziały predykcji z regresji kwantylowej
 
 Predykcja punktowa nie mówi, jak bardzo model jest pewny. Regresja kwantylowa uczy model przewidywać wybrany kwantyl rozkładu ceny, więc dwa kwantyle tworzą przedział.
 
@@ -31,7 +31,7 @@ Predykcja punktowa nie mówi, jak bardzo model jest pewny. Regresja kwantylowa u
 4. Skalibruj przedziały. Policz predykcje pozakładkowe obu granic na zbiorze treningowym (`cross_val_predict` z `cv`), wyznacz dla każdego domu wynik niezgodności `max(dolna - cena, cena - górna)` i weź jego kwantyl rzędu `ceil((n + 1) * 0,9) / n`. Tę wartość odejmij od dolnej i dodaj do górnej granicy na zbiorze testowym. Policz nowe pokrycie i nową szerokość.
 5. Odpowiedz, ile kosztuje (w szerokości przedziału) poprawa pokrycia i dlaczego pokrycie liczone na 292 domach nie jest dokładnie równe nominalnemu.
 
-## Zadanie D: Bike Sharing Demand i podział czasowy (40 do 50 min)
+## Zadanie D: Bike Sharing Demand i podział czasowy
 
 Zadanie pokazuje, że losowy podział danych zawyża wynik, gdy obserwacje są uporządkowane w czasie. Używa osobnego zbioru: godzinowych wypożyczeń rowerów w Waszyngtonie w latach 2011 i 2012.
 
@@ -41,7 +41,7 @@ Zadanie pokazuje, że losowy podział danych zawyża wynik, gdy obserwacje są u
 4. Odłóż ostatnie 20% danych jako test czasowy, dopasuj model na pozostałych i policz R2 i RMSE. Powtórz bez cechy `year`. Opisz, co ten wynik mówi o ekstrapolacji w czasie przez modele drzewiaste.
 5. Odpowiedz: dlaczego losowy podział daje wyższe R2 i dlaczego to nie jest uczciwa ocena modelu, który ma przewidywać przyszłość?
 
-## Zadanie E: Inżynieria cech i selekcja Lassem w pipeline (40 do 50 min)
+## Zadanie E: Inżynieria cech i selekcja Lassem w pipeline
 
 Dodanie cech wyprowadzonych z istniejących (powierzchnia całkowita, wiek domu) jest klasycznym sposobem poprawy modelu, zwłaszcza liniowego. Selekcja cech musi być częścią pipeline'u, żeby nie przeciekała informacja ze zbioru walidacyjnego.
 
