@@ -4,14 +4,14 @@ Materiały do laboratoriów z uczenia maszynowego: sześć laboratoriów (łącz
 
 ## Plan zajęć
 
-| Lab | Temat | Zbiór danych | Godziny |
-|---|---|---|---|
-| 1 | Proces uczenia maszynowego, przygotowanie danych, `Pipeline` | Adult | 2 |
-| 2 | Klasyfikacja, metryki, próg decyzyjny, koszt błędów | German Credit | 3 |
-| 3 | Regresja, regularyzacja, zespoły, strojenie, interpretacja | Ames Housing | 3 |
-| 4 | Uczenie nienadzorowane | Wholesale customers, digits | 3 |
-| 5 | Przetwarzanie tekstu | PolEmo 2.0, 20 Newsgroups | 3 |
-| 6 | Sieci neuronowe | Fashion-MNIST, CIFAR-10 | 4 |
+| Lab | Temat | Zbiór danych |
+|---|---|---|
+| 1 | Proces uczenia maszynowego, przygotowanie danych, `Pipeline` | Adult |
+| 2 | Klasyfikacja, metryki, próg decyzyjny, koszt błędów | German Credit |
+| 3 | Regresja, regularyzacja, zespoły, strojenie, interpretacja | Ames Housing |
+| 4 | Uczenie nienadzorowane | Wholesale customers, digits |
+| 5 | Przetwarzanie tekstu | PolEmo 2.0, 20 Newsgroups |
+| 6 | Sieci neuronowe | Fashion-MNIST, CIFAR-10 |
 
 Projekt zaliczeniowy opisuje plik `projekt_zaliczeniowy/projekt_opis.md`.
 
