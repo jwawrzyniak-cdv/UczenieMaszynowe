@@ -1,6 +1,6 @@
 # Uczenie maszynowe: laboratoria w Google Colab
 
-Materiały do laboratoriów z uczenia maszynowego: sześć laboratoriów (łącznie 18 godzin lekcyjnych) i projekt zaliczeniowy. Wszystko wykonujecie w Google Colab, na darmowym środowisku.
+Materiały do laboratoriów z uczenia maszynowego: sześć laboratoriów i projekt zaliczeniowy. Wszystko wykonujecie w Google Colab, na darmowym środowisku.
 
 ## Plan zajęć
 
