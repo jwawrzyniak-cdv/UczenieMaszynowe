@@ -53,7 +53,7 @@ Etapy 1 i 2 nie są oceniane liczbą punktów, ale ich brak obniża ocenę końc
 
 Wszystkie zbiory pobiera się programowo. Można zaproponować własny temat, byle dane były publiczne i miały licencję pozwalającą na użycie.
 
-### Odejście klientów operatora telekomunikacyjnego
+### Odejście klientów operatora telekomunikacyjnego (temat zarezerwowany)
 
 Zbiór `telco-customer-churn` w OpenML (identyfikator 42178, 7043 klientów, 19 cech). Klasyfikacja binarna, w której koszt utraty klienta jest inny niż koszt kampanii utrzymaniowej. Kolumna `TotalCharges` nie jest czysto liczbowa i wymaga uwagi.
 
