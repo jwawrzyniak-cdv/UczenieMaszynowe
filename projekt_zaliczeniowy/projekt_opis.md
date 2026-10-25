@@ -57,7 +57,7 @@ Wszystkie zbiory pobiera się programowo. Można zaproponować własny temat, by
 
 Zbiór `telco-customer-churn` w OpenML (identyfikator 42178, 7043 klientów, 19 cech). Klasyfikacja binarna, w której koszt utraty klienta jest inny niż koszt kampanii utrzymaniowej. Kolumna `TotalCharges` nie jest czysto liczbowa i wymaga uwagi.
 
-### Kampania marketingowa banku
+### Kampania marketingowa banku (temat zarezerwowany)
 
 Zbiór `bank-marketing` (identyfikator 1461, 45211 rozmów, 16 cech, w OpenML pod anonimowymi nazwami V1 do V16, opis w UCI). Klasyfikacja niezbalansowana. Cecha czasu rozmowy (`duration`, kolumna V12) nie jest znana przed wykonaniem rozmowy, więc jej użycie trzeba przemyśleć i omówić w pracy.
 
@@ -73,7 +73,7 @@ Zbiór `diamonds` (identyfikator 42225, 53940 kamieni, 9 cech). Regresja z silni
 
 Zbiór `Bike_Sharing_Demand` (identyfikator 42712, 17379 godzin, kolumna celu `count`). Regresja na danych uporządkowanych w czasie, więc podział musi być czasowy. Porównanie z podziałem losowym jest częścią zadania.
 
-### Klasyfikacja zdjęć kwiatów
+### Klasyfikacja zdjęć kwiatów (temat zarezerwowany)
 
 Zbiór `flower_photos` (około 3,7 tys. zdjęć pięciu gatunków, archiwum pod adresem https://storage.googleapis.com/download.tensorflow.org/example_images/flower_photos.tgz, pobierane przez `keras.utils.get_file`). Uczenie transferowe, augmentacja, analiza pomyłek. Wymaga runtime z GPU.
 
